@@ -17,6 +17,7 @@ class DishesModel: ObservableObject {
         let urlSession = URLSession.shared
         
         do {
+            // Queries a server on the specified URL
             let (data, _) = try await urlSession.data(from: url)
             // let fullMenu = try JSONDecoder().decode(...)
             // menuItems = ...
