@@ -12,7 +12,7 @@ struct JSONMenu: Codable {
 }
 
 struct MenuItem: Codable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     let title: String
     let price: Int
 }
