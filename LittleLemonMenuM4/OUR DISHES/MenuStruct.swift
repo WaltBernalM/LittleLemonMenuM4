@@ -8,7 +8,10 @@
 import Foundation
 
 struct JSONMenu: Codable {
-    // Add code here
+    enum CodingKeys: String, CodingKey {
+        case menu = "menu"
+    }
+    var menu: [MenuItem]
 }
 
 struct MenuItem: Codable, Identifiable {
