@@ -58,7 +58,7 @@ struct OurDishes: View {
                                 }
                         }
                     }
-                    // Add search bar modifier
+                    .searchable(text: $searchText, prompt: "search...")
                 }
             }
             .padding(.top, -40)
