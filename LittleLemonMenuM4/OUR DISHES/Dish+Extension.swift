@@ -11,9 +11,8 @@ import CoreData
 extension Dish {
     static func createDishesFrom(menuItems: [MenuItem], _ context: NSManagedObjectContext) {
         for item in menuItems {
-            guard let _ = exists(name: item.title, context) else {
-                continue
-            }
+            guard let _ = exists(name: item.title, context) 
+            else { continue }
             let newDish = Dish(context: context)
             newDish.name = item.title
             newDish.price = item.price
