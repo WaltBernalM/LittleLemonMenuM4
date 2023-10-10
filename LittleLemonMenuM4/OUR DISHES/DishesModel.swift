@@ -17,14 +17,14 @@ class DishesModel: ObservableObject {
         let urlSession = URLSession.shared
         
         do {
-            // Queries a server on the specified URL
+            /// Queries a server on the specified URL
             let (data, _) = try await urlSession.data(from: url)
             
-            // Decodes the data obtained from the URLSession against the data model
+            /// Decodes the data obtained from the URLSession against the data model
             let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data)
             menuItems = fullMenu.menu
             
-            // Populate Core Data
+            /// Populate Core Data => Deletion of previous data and population with new data
             Dish.deleteAll(coreDataContext)
             Dish.createDishesFrom(menuItems: menuItems, coreDataContext)
         } catch (let error) {

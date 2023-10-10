@@ -14,10 +14,14 @@ struct OurDishes: View {
     @ObservedObject var dishesModel = DishesModel()
     @State private var showAlert = false
     @State var searchText = ""
+    
+    /// Variable used in the display alert, to provide a better feedback to user.
     @State var itemToOrder = ""
     
+    /// Variable used to prevent re-render and ephemeral duplicated data.
     @Binding var menuLoad: Bool
     
+    /// Initial sortDescriptor setup
     static private var sortDescriptors: [NSSortDescriptor] {
         [NSSortDescriptor(
             key: "name",
@@ -26,6 +30,7 @@ struct OurDishes: View {
         )]
     }
     
+    /// Fetch request used to obtain the Dishes from Core Data
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Dish.name, ascending: true)],
         animation: .default
@@ -46,6 +51,7 @@ struct OurDishes: View {
                 .cornerRadius(20)
             
             NavigationView {
+                /// Render of all items located in Core Data
                 FetchedObjects(
                     predicate: buildPredicate(),
                     sortDescriptors: buildSortDescriptors()
@@ -69,7 +75,7 @@ struct OurDishes: View {
             }
             .scrollContentBackground(.hidden)
             .task {
-                // Fix to  avoid duplicated items rendering
+                /// Avoidance of ephemeral duplicated items rendering
                 if !menuLoad {
                     await dishesModel.reload(viewContext)
                 }
@@ -78,6 +84,7 @@ struct OurDishes: View {
         }
     }
     
+    /// Function to filter the dishes by name if searchText has a non-zero value
     func buildPredicate() -> NSPredicate {
         if searchText.count == 0 {
             return NSPredicate(value: true)
@@ -85,6 +92,8 @@ struct OurDishes: View {
         return NSPredicate(format: "name CONTAINS[cd] %@", searchText)
     }
     
+    /// Function to sort by name:
+    /// In ascending alphabetical order with a localized standard compare
     func buildSortDescriptors() -> [NSSortDescriptor] {
         return [
             NSSortDescriptor(

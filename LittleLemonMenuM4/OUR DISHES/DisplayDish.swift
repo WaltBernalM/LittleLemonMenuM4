@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Print of individual dishes on the foods menu
 struct DisplayDish: View {
     @ObservedObject private var dish:Dish
     init(_ dish: Dish) {
