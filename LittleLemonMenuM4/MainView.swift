@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  LittleLemonMenuM4
 //
 //  Created by Walter Bernal Montero on 09/10/23.
@@ -37,7 +37,6 @@ struct MainView: View {
                 .onAppear() {
                     tabSelection = 1
                 }
-//                .environmentObject(viewContext)
             
             ReservationView()
                 .tag(2)
