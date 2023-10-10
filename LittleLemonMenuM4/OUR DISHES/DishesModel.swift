@@ -19,8 +19,10 @@ class DishesModel: ObservableObject {
         do {
             // Queries a server on the specified URL
             let (data, _) = try await urlSession.data(from: url)
-            // let fullMenu = try JSONDecoder().decode(...)
-            // menuItems = ...
+            
+            // Decodes the data obtained from the URLSession against the data model
+            let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data)
+            menuItems = fullMenu.menu
             
             // Populate Core Data
             Dish.deleteAll(coreDataContext)
