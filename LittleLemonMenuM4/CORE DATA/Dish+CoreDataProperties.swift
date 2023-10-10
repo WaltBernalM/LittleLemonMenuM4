@@ -60,7 +60,7 @@ extension Dish {
 
 extension Dish : Identifiable {
     
-    private static func request() -> NSFetchRequest<NSFetchRequestResult> {
+    static func request() -> NSFetchRequest<NSFetchRequestResult> {
         let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: Self.self))
         request.returnsDistinctResults = true
         request.returnsObjectsAsFaults = true
@@ -72,20 +72,20 @@ extension Dish : Identifiable {
         let predicate = NSPredicate(format: "name == %@", name)
         request.predicate = predicate
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare))
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false, selector: #selector(NSString.localizedStandardCompare))
         request.sortDescriptors = [sortDescriptor]
         
         do {
             guard let results = try context.fetch(request) as? [Dish], results.count == 1, let dish = results.first
-            else { return nil }
+            else { return Dish(context: context) }
             return dish
-        } catch (let error) {
+        } catch (let error){
             print(error.localizedDescription)
             return nil
         }
     }
     
-    static func delete(with name: String, _ context: NSManagedObjectContext) -> Bool {
+    static func delete(with name: String, _ context:NSManagedObjectContext) -> Bool {
         let request = Dish.request()
         let predicate = NSPredicate(format: "name == %@", name)
         request.predicate = predicate
@@ -95,7 +95,7 @@ extension Dish : Identifiable {
             else { return false }
             context.delete(dish)
             return true
-        } catch (let error) {
+        } catch (let error){
             print(error.localizedDescription)
             return false
         }
@@ -114,37 +114,21 @@ extension Dish : Identifiable {
         }
     }
     
-    static func exists(name: String, _ context: NSManagedObjectContext) -> Bool? {
-        let request = Dish.request()
-        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
-        request.predicate = predicate
-        
-        do {
-            guard let results = try context.fetch(request) as? [Dish]
-            else { return nil }
-            return results.count > 0
-        } catch (let error) {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
-    
-    static func save(_ context: NSManagedObjectContext) {
+    static func save(_ context:NSManagedObjectContext) {
         guard context.hasChanges else { return }
         do {
             try context.save()
         } catch let error as NSError {
-            print("Unresolveed error \(error), \(error.userInfo)")
+            print("Unresolved error \(error), \(error.userInfo)")
         }
     }
     
     class func readAll(_ context: NSManagedObjectContext) -> [Dish]? {
         let request = Dish.request()
         do {
-            guard let results = try context.fetch(request) as? [Dish], results.count > 0
-            else { return nil }
+            guard let results = try context.fetch(request) as? [Dish], results.count > 0 else { return nil }
             return results
-        } catch (let error) {
+        } catch (let error){
             print(error.localizedDescription)
             return nil
         }
