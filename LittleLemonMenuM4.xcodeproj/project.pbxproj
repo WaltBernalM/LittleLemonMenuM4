@@ -8,21 +8,65 @@
 
 /* Begin PBXBuildFile section */
 		DA7361802AD4BEB300227631 /* LittleLemonMenuM4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73617F2AD4BEB300227631 /* LittleLemonMenuM4App.swift */; };
-		DA7361822AD4BEB300227631 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361812AD4BEB300227631 /* ContentView.swift */; };
+		DA7361822AD4BEB300227631 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361812AD4BEB300227631 /* MainView.swift */; };
 		DA7361842AD4BEB500227631 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7361832AD4BEB500227631 /* Assets.xcassets */; };
 		DA7361872AD4BEB500227631 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7361862AD4BEB500227631 /* Preview Assets.xcassets */; };
 		DA7361892AD4BEB500227631 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361882AD4BEB500227631 /* Persistence.swift */; };
 		DA73618C2AD4BEB500227631 /* LittleLemonMenuM4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA73618A2AD4BEB500227631 /* LittleLemonMenuM4.xcdatamodeld */; };
+		DA73619E2AD4C13B00227631 /* Dessert+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361962AD4C13B00227631 /* Dessert+CoreDataClass.swift */; };
+		DA73619F2AD4C13B00227631 /* Dessert+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361972AD4C13B00227631 /* Dessert+CoreDataProperties.swift */; };
+		DA7361A02AD4C13B00227631 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361982AD4C13B00227631 /* Location+CoreDataClass.swift */; };
+		DA7361A12AD4C13B00227631 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361992AD4C13B00227631 /* Location+CoreDataProperties.swift */; };
+		DA7361A22AD4C13B00227631 /* Dish+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73619A2AD4C13B00227631 /* Dish+CoreDataClass.swift */; };
+		DA7361A32AD4C13B00227631 /* Dish+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73619B2AD4C13B00227631 /* Dish+CoreDataProperties.swift */; };
+		DA7361A42AD4C13B00227631 /* Customer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73619C2AD4C13B00227631 /* Customer+CoreDataClass.swift */; };
+		DA7361A52AD4C13B00227631 /* Customer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA73619D2AD4C13B00227631 /* Customer+CoreDataProperties.swift */; };
+		DA7361A72AD4C1DF00227631 /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361A62AD4C1DF00227631 /* FetchedObjects.swift */; };
+		DA7361AB2AD4C83600227631 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361AA2AD4C83600227631 /* Reservation.swift */; };
+		DA7361AD2AD4C93500227631 /* RestaurantLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361AC2AD4C93500227631 /* RestaurantLocation.swift */; };
+		DA7361AF2AD4C99500227631 /* DishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361AE2AD4C99500227631 /* DishesModel.swift */; };
+		DA7361B12AD4C9AC00227631 /* MenuStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361B02AD4C9AC00227631 /* MenuStruct.swift */; };
+		DA7361B32AD4C9BC00227631 /* Dish+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361B22AD4C9BC00227631 /* Dish+Extension.swift */; };
+		DA7361B52AD4CD2200227631 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361B42AD4CD2200227631 /* Model.swift */; };
+		DA7361B72AD4CF1D00227631 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361B62AD4CF1D00227631 /* LocationsView.swift */; };
+		DA7361B92AD4CF7100227631 /* LittleLemonLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361B82AD4CF7100227631 /* LittleLemonLogo.swift */; };
+		DA7361BB2AD4D0BC00227631 /* ReservationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361BA2AD4D0BC00227631 /* ReservationForm.swift */; };
+		DA7361BD2AD4D0D100227631 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361BC2AD4D0D100227631 /* ReservationView.swift */; };
+		DA7361BF2AD4D0E200227631 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361BE2AD4D0E200227631 /* RestaurantView.swift */; };
+		DA7361C12AD4DE8600227631 /* OurDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361C02AD4DE8600227631 /* OurDishes.swift */; };
+		DA7361C32AD4DE9200227631 /* DisplayDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7361C22AD4DE9200227631 /* DisplayDish.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA73617C2AD4BEB300227631 /* LittleLemonMenuM4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemonMenuM4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA73617F2AD4BEB300227631 /* LittleLemonMenuM4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonMenuM4App.swift; sourceTree = "<group>"; };
-		DA7361812AD4BEB300227631 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DA7361812AD4BEB300227631 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DA7361832AD4BEB500227631 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7361862AD4BEB500227631 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA7361882AD4BEB500227631 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA73618B2AD4BEB500227631 /* LittleLemonMenuM4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LittleLemonMenuM4.xcdatamodel; sourceTree = "<group>"; };
+		DA7361962AD4C13B00227631 /* Dessert+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dessert+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DA7361972AD4C13B00227631 /* Dessert+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dessert+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DA7361982AD4C13B00227631 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DA7361992AD4C13B00227631 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DA73619A2AD4C13B00227631 /* Dish+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DA73619B2AD4C13B00227631 /* Dish+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DA73619C2AD4C13B00227631 /* Customer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Customer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DA73619D2AD4C13B00227631 /* Customer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Customer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DA7361A62AD4C1DF00227631 /* FetchedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
+		DA7361AA2AD4C83600227631 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		DA7361AC2AD4C93500227631 /* RestaurantLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantLocation.swift; sourceTree = "<group>"; };
+		DA7361AE2AD4C99500227631 /* DishesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesModel.swift; sourceTree = "<group>"; };
+		DA7361B02AD4C9AC00227631 /* MenuStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuStruct.swift; sourceTree = "<group>"; };
+		DA7361B22AD4C9BC00227631 /* Dish+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+Extension.swift"; sourceTree = "<group>"; };
+		DA7361B42AD4CD2200227631 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		DA7361B62AD4CF1D00227631 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
+		DA7361B82AD4CF7100227631 /* LittleLemonLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonLogo.swift; sourceTree = "<group>"; };
+		DA7361BA2AD4D0BC00227631 /* ReservationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationForm.swift; sourceTree = "<group>"; };
+		DA7361BC2AD4D0D100227631 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
+		DA7361BE2AD4D0E200227631 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
+		DA7361C02AD4DE8600227631 /* OurDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurDishes.swift; sourceTree = "<group>"; };
+		DA7361C22AD4DE9200227631 /* DisplayDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDish.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +99,16 @@
 		DA73617E2AD4BEB300227631 /* LittleLemonMenuM4 */ = {
 			isa = PBXGroup;
 			children = (
+				DA7361922AD4BF6100227631 /* CORE DATA */,
+				DA7361932AD4BF8600227631 /* OUR DISHES */,
+				DA7361942AD4BF9300227631 /* RESERVATION */,
+				DA7361952AD4BF9E00227631 /* RESTAURANT */,
 				DA73617F2AD4BEB300227631 /* LittleLemonMenuM4App.swift */,
-				DA7361812AD4BEB300227631 /* ContentView.swift */,
+				DA7361B82AD4CF7100227631 /* LittleLemonLogo.swift */,
+				DA7361B62AD4CF1D00227631 /* LocationsView.swift */,
+				DA7361812AD4BEB300227631 /* MainView.swift */,
+				DA7361B42AD4CD2200227631 /* Model.swift */,
 				DA7361832AD4BEB500227631 /* Assets.xcassets */,
-				DA7361882AD4BEB500227631 /* Persistence.swift */,
-				DA73618A2AD4BEB500227631 /* LittleLemonMenuM4.xcdatamodeld */,
 				DA7361852AD4BEB500227631 /* Preview Content */,
 			);
 			path = LittleLemonMenuM4;
@@ -71,6 +120,55 @@
 				DA7361862AD4BEB500227631 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA7361922AD4BF6100227631 /* CORE DATA */ = {
+			isa = PBXGroup;
+			children = (
+				DA73619C2AD4C13B00227631 /* Customer+CoreDataClass.swift */,
+				DA73619D2AD4C13B00227631 /* Customer+CoreDataProperties.swift */,
+				DA7361962AD4C13B00227631 /* Dessert+CoreDataClass.swift */,
+				DA7361972AD4C13B00227631 /* Dessert+CoreDataProperties.swift */,
+				DA73619A2AD4C13B00227631 /* Dish+CoreDataClass.swift */,
+				DA73619B2AD4C13B00227631 /* Dish+CoreDataProperties.swift */,
+				DA7361982AD4C13B00227631 /* Location+CoreDataClass.swift */,
+				DA7361992AD4C13B00227631 /* Location+CoreDataProperties.swift */,
+				DA73618A2AD4BEB500227631 /* LittleLemonMenuM4.xcdatamodeld */,
+				DA7361882AD4BEB500227631 /* Persistence.swift */,
+				DA7361A62AD4C1DF00227631 /* FetchedObjects.swift */,
+			);
+			path = "CORE DATA";
+			sourceTree = "<group>";
+		};
+		DA7361932AD4BF8600227631 /* OUR DISHES */ = {
+			isa = PBXGroup;
+			children = (
+				DA7361C02AD4DE8600227631 /* OurDishes.swift */,
+				DA7361C22AD4DE9200227631 /* DisplayDish.swift */,
+				DA7361AE2AD4C99500227631 /* DishesModel.swift */,
+				DA7361B02AD4C9AC00227631 /* MenuStruct.swift */,
+				DA7361B22AD4C9BC00227631 /* Dish+Extension.swift */,
+			);
+			path = "OUR DISHES";
+			sourceTree = "<group>";
+		};
+		DA7361942AD4BF9300227631 /* RESERVATION */ = {
+			isa = PBXGroup;
+			children = (
+				DA7361AA2AD4C83600227631 /* Reservation.swift */,
+				DA7361BA2AD4D0BC00227631 /* ReservationForm.swift */,
+				DA7361BC2AD4D0D100227631 /* ReservationView.swift */,
+			);
+			path = RESERVATION;
+			sourceTree = "<group>";
+		};
+		DA7361952AD4BF9E00227631 /* RESTAURANT */ = {
+			isa = PBXGroup;
+			children = (
+				DA7361AC2AD4C93500227631 /* RestaurantLocation.swift */,
+				DA7361BE2AD4D0E200227631 /* RestaurantView.swift */,
+			);
+			path = RESTAURANT;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +241,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7361A12AD4C13B00227631 /* Location+CoreDataProperties.swift in Sources */,
+				DA7361B12AD4C9AC00227631 /* MenuStruct.swift in Sources */,
+				DA7361A02AD4C13B00227631 /* Location+CoreDataClass.swift in Sources */,
+				DA73619F2AD4C13B00227631 /* Dessert+CoreDataProperties.swift in Sources */,
+				DA7361A72AD4C1DF00227631 /* FetchedObjects.swift in Sources */,
+				DA7361B32AD4C9BC00227631 /* Dish+Extension.swift in Sources */,
 				DA7361892AD4BEB500227631 /* Persistence.swift in Sources */,
+				DA7361A42AD4C13B00227631 /* Customer+CoreDataClass.swift in Sources */,
+				DA7361BB2AD4D0BC00227631 /* ReservationForm.swift in Sources */,
 				DA73618C2AD4BEB500227631 /* LittleLemonMenuM4.xcdatamodeld in Sources */,
-				DA7361822AD4BEB300227631 /* ContentView.swift in Sources */,
+				DA7361BD2AD4D0D100227631 /* ReservationView.swift in Sources */,
+				DA7361BF2AD4D0E200227631 /* RestaurantView.swift in Sources */,
+				DA7361822AD4BEB300227631 /* MainView.swift in Sources */,
+				DA7361B92AD4CF7100227631 /* LittleLemonLogo.swift in Sources */,
+				DA7361AD2AD4C93500227631 /* RestaurantLocation.swift in Sources */,
 				DA7361802AD4BEB300227631 /* LittleLemonMenuM4App.swift in Sources */,
+				DA7361A32AD4C13B00227631 /* Dish+CoreDataProperties.swift in Sources */,
+				DA7361A22AD4C13B00227631 /* Dish+CoreDataClass.swift in Sources */,
+				DA73619E2AD4C13B00227631 /* Dessert+CoreDataClass.swift in Sources */,
+				DA7361AF2AD4C99500227631 /* DishesModel.swift in Sources */,
+				DA7361B52AD4CD2200227631 /* Model.swift in Sources */,
+				DA7361B72AD4CF1D00227631 /* LocationsView.swift in Sources */,
+				DA7361C32AD4DE9200227631 /* DisplayDish.swift in Sources */,
+				DA7361AB2AD4C83600227631 /* Reservation.swift in Sources */,
+				DA7361A52AD4C13B00227631 /* Customer+CoreDataProperties.swift in Sources */,
+				DA7361C12AD4DE8600227631 /* OurDishes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
