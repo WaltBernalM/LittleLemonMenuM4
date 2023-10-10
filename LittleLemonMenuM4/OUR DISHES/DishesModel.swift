@@ -57,6 +57,6 @@ extension URLSession {
     }
     
     func itemsTask(with url: URL, completionHandler: @escaping (JSONMenu?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.codableTask(with: url, completionHander: completionHandler)
+        return self.codableTask(with: url, completionHandler: completionHandler)
     }
 }
