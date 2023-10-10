@@ -6,13 +6,56 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct OurDishes: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @ObservedObject var dishesModel = DishesModel()
+    @State private var showAlert = false
+    @State var searchText = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            LittleLemonLogo()
+                .padding(.bottom, 20)
+                .padding(.top, 50)
+            
+            Text("Tap to order")
+                .foregroundColor(.black)
+                .padding([.leading, .trailing], 40)
+                .padding([.top, .bottom], 8)
+                .background(Color("approvedYellow"))
+                .cornerRadius(20)
+            
+            NavigationView {
+                FetchedObjects(
+//                    predicate: buildPredicate(),
+//                    sortDescriptors: buildSortDescriptors()
+                ) {
+                    (dishes: [Dish]) in
+                    List{
+                        // Code for the list enumeration
+                    }
+                    // Add search bar modifier
+                }
+            }
+            .padding(.top, -40)
+            .alert("Order placed, thanks!", isPresented: $showAlert) {
+                Button("OK", role: .cancel){
+                    
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .task {
+                await dishesModel.reload(viewContext)
+            }
+        }
     }
 }
 
-#Preview {
-    OurDishes()
+struct OurDishes_Previews: PreviewProvider {
+    static var previews: some View {
+        OurDishes()
+    }
 }
