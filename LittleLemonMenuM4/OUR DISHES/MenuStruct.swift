@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct JSONMenu: Codable {
+    // Add code here
+}
+
+struct MenuItem: Codable, Identifiable {
+    let id = UUID()
+    
+    // Add code here
+}
