@@ -49,8 +49,14 @@ struct OurDishes: View {
                     sortDescriptors: buildSortDescriptors()
                 ) {
                     (dishes: [Dish]) in
-                    List{
-                        // Code for the list enumeration
+                    List {
+                        ForEach(dishes, id:\.self) {dish in
+                            DisplayDish(dish)
+                                .onTapGesture {
+                                    showAlert.toggle()
+                                    itemToOrder = dish.name!
+                                }
+                        }
                     }
                     // Add search bar modifier
                 }
