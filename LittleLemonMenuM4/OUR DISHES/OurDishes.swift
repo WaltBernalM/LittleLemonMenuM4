@@ -14,6 +14,21 @@ struct OurDishes: View {
     @ObservedObject var dishesModel = DishesModel()
     @State private var showAlert = false
     @State var searchText = ""
+    @State var itemToOrder = ""
+    
+    static private var sortDescriptors: [NSSortDescriptor] {
+        [NSSortDescriptor(
+            key: "name",
+            ascending: true,
+            selector: #selector(NSString.localizedStandardCompare)
+        )]
+    }
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Dish.name, ascending: true)],
+        animation: .default
+    )
+    var dishes: FetchedResults<Dish>
     
     var body: some View {
         VStack {
