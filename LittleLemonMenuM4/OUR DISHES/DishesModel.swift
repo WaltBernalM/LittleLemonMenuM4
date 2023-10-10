@@ -46,13 +46,13 @@ func newJSONEncoder() -> JSONEncoder {
 }
 
 extension URLSession {
-    fileprivate func codableTask<T: Codable>(with url: URL, completionHander: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return self.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
-                completionHander(nil, response, error)
+                completionHandler(nil, response, error)
                 return
             }
-            completionHander(try? newJSONDecoder().decode(T.self, from: data), response, nil)
+            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
         }
     }
     
