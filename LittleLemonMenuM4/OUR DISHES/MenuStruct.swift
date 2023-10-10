@@ -8,11 +8,21 @@
 import Foundation
 
 struct JSONMenu: Codable {
-    // Add code here
+    enum CodingKeys: String, CodingKey {
+        case menu = "menu"
+    }
+    var menu: [MenuItem]
 }
 
 struct MenuItem: Codable, Identifiable {
-    let id = UUID()
-    
-    // Add code here
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case priceStr = "price"
+    }
+    var id = UUID()
+    let title: String
+    let priceStr: String
+    var price: Float {
+        return Float(priceStr) ?? 0
+    }
 }

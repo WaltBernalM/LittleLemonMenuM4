@@ -9,12 +9,18 @@ import SwiftUI
 
 struct DisplayDish: View {
     @ObservedObject private var dish:Dish
-    init(_ dish:Dish) {
+    init(_ dish: Dish) {
         self.dish = dish
     }
     
     var body: some View {
-        EmptyView()
+        HStack {
+            Text(dish.name!)
+            Spacer()
+            Text("$\(String(format: "%.2f", dish.price))")
+                .font(.callout)
+                .monospaced()
+        }
         .contentShape(Rectangle()) // keep this code
     }
 }

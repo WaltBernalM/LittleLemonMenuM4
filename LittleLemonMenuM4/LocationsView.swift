@@ -32,7 +32,7 @@ struct LocationsView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LocationsView_Previews: PreviewProvider {
     static var previews: some View {
         LocationsView().environmentObject(Model())
     }

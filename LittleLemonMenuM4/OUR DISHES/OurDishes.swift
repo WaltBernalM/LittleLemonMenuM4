@@ -13,7 +13,23 @@ struct OurDishes: View {
     
     @ObservedObject var dishesModel = DishesModel()
     @State private var showAlert = false
+    @State private var menuLoaded = false
     @State var searchText = ""
+    @State var itemToOrder = ""
+    
+    static private var sortDescriptors: [NSSortDescriptor] {
+        [NSSortDescriptor(
+            key: "name",
+            ascending: true,
+            selector: #selector(NSString.localizedStandardCompare)
+        )]
+    }
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Dish.name, ascending: true)],
+        animation: .default
+    )
+    var dishes: FetchedResults<Dish>
     
     var body: some View {
         VStack {
@@ -30,27 +46,52 @@ struct OurDishes: View {
             
             NavigationView {
                 FetchedObjects(
-//                    predicate: buildPredicate(),
-//                    sortDescriptors: buildSortDescriptors()
+                    predicate: buildPredicate(),
+                    sortDescriptors: buildSortDescriptors()
                 ) {
                     (dishes: [Dish]) in
-                    List{
-                        // Code for the list enumeration
+                    List {
+                        ForEach(dishes, id:\.self) {dish in
+                            DisplayDish(dish)
+                                .onTapGesture {
+                                    showAlert.toggle()
+                                    itemToOrder = dish.name!
+                                }
+                        }
                     }
-                    // Add search bar modifier
+                    .searchable(text: $searchText, prompt: "search...")
                 }
             }
-            .padding(.top, -40)
-            .alert("Order placed, thanks!", isPresented: $showAlert) {
-                Button("OK", role: .cancel){
-                    
-                }
+            .padding(.top, -10)
+            .alert("Order placed for a \(itemToOrder), thanks!", isPresented: $showAlert) {
+                Button("OK", role: .cancel) { }
             }
             .scrollContentBackground(.hidden)
             .task {
-                await dishesModel.reload(viewContext)
+                // Fix to  avoid duplicated items rendering
+                if !menuLoaded {
+                    await dishesModel.reload(viewContext)
+                }
+                menuLoaded = true
             }
         }
+    }
+    
+    func buildPredicate() -> NSPredicate {
+        if searchText.count == 0 {
+            return NSPredicate(value: true)
+        }
+        return NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+    }
+    
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(
+                key: "name",
+                ascending: true, 
+                selector: #selector(NSString.localizedStandardCompare)
+            )
+        ]
     }
 }
 

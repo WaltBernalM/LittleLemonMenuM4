@@ -10,6 +10,28 @@ import CoreData
 
 extension Dish {
     static func createDishesFrom(menuItems: [MenuItem], _ context: NSManagedObjectContext) {
+        for item in menuItems {
+            guard let _ = exists(name: item.title, context) else {
+                continue
+            }
+            let newDish = Dish(context: context)
+            newDish.name = item.title
+            newDish.price = item.price
+        }
+    }
+    
+    static func exists(name: String, _ context:NSManagedObjectContext) -> Bool? {
+        let request = Dish.request()
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
+        request.predicate = predicate
         
+        do {
+            guard let results = try context.fetch(request) as? [Dish]
+            else { return nil }
+            return results.count > 0
+        } catch (let error){
+            print(error.localizedDescription)
+            return false
+        }
     }
 }

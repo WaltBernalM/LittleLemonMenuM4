@@ -17,14 +17,19 @@ class DishesModel: ObservableObject {
         let urlSession = URLSession.shared
         
         do {
+            // Queries a server on the specified URL
             let (data, _) = try await urlSession.data(from: url)
-            // let fullMenu = try JSONDecoder().decode(...)
-            // menuItems = ...
+            
+            // Decodes the data obtained from the URLSession against the data model
+            let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data)
+            menuItems = fullMenu.menu
             
             // Populate Core Data
             Dish.deleteAll(coreDataContext)
             Dish.createDishesFrom(menuItems: menuItems, coreDataContext)
-        } catch { }
+        } catch (let error) {
+            print(error.localizedDescription)
+        }
     }
 }
 
@@ -41,17 +46,17 @@ func newJSONEncoder() -> JSONEncoder {
 }
 
 extension URLSession {
-    fileprivate func codableTask<T: Codable>(with url: URL, completionHander: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return self.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
-                completionHander(nil, response, error)
+                completionHandler(nil, response, error)
                 return
             }
-            completionHander(try? newJSONDecoder().decode(T.self, from: data), response, nil)
+            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
         }
     }
     
     func itemsTask(with url: URL, completionHandler: @escaping (JSONMenu?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.codableTask(with: url, completionHander: completionHandler)
+        return self.codableTask(with: url, completionHandler: completionHandler)
     }
 }
