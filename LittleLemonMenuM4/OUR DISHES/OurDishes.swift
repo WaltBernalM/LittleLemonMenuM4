@@ -13,9 +13,10 @@ struct OurDishes: View {
     
     @ObservedObject var dishesModel = DishesModel()
     @State private var showAlert = false
-    @State private var menuLoaded = false
     @State var searchText = ""
     @State var itemToOrder = ""
+    
+    @Binding var menuLoad: Bool
     
     static private var sortDescriptors: [NSSortDescriptor] {
         [NSSortDescriptor(
@@ -69,10 +70,10 @@ struct OurDishes: View {
             .scrollContentBackground(.hidden)
             .task {
                 // Fix to  avoid duplicated items rendering
-                if !menuLoaded {
+                if !menuLoad {
                     await dishesModel.reload(viewContext)
                 }
-                menuLoaded = true
+                menuLoad = true
             }
         }
     }
@@ -97,6 +98,6 @@ struct OurDishes: View {
 
 struct OurDishes_Previews: PreviewProvider {
     static var previews: some View {
-        OurDishes()
+        OurDishes(menuLoad: .constant(false))
     }
 }

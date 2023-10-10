@@ -26,9 +26,9 @@ extension Dish {
         request.predicate = predicate
         
         do {
-            guard let results = try context.fetch(request) as? [Dish]
-            else { return nil }
-            return results.count > 0
+            guard let results = try context.fetch(request) as? [Dish], results.count > 0
+            else { return false }
+            return true
         } catch (let error){
             print(error.localizedDescription)
             return false
