@@ -78,5 +78,12 @@ extension Customer {
 }
 
 extension Customer : Identifiable {
+    
+    private static func request() -> NSFetchRequest<NSFetchRequestResult> {
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: Self.self))
+        request.returnsDistinctResults = true
+        request.returnsObjectsAsFaults = true
+        return request
+    }
 
 }
