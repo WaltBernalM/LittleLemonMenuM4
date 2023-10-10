@@ -13,6 +13,7 @@ struct OurDishes: View {
     
     @ObservedObject var dishesModel = DishesModel()
     @State private var showAlert = false
+    @State private var menuLoaded = false
     @State var searchText = ""
     @State var itemToOrder = ""
     
@@ -61,11 +62,9 @@ struct OurDishes: View {
                     .searchable(text: $searchText, prompt: "search...")
                 }
             }
-            .padding(.top, -40)
-            .alert("Order placed, thanks!", isPresented: $showAlert) {
-                Button("OK", role: .cancel){
-                    
-                }
+            .padding(.top, -10)
+            .alert("Order placed for a \(itemToOrder), thanks!", isPresented: $showAlert) {
+                Button("OK", role: .cancel) { }
             }
             .scrollContentBackground(.hidden)
             .task {
