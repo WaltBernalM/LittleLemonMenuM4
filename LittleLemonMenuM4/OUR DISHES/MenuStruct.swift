@@ -15,7 +15,14 @@ struct JSONMenu: Codable {
 }
 
 struct MenuItem: Codable, Identifiable {
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case priceStr = "price"
+    }
     var id = UUID()
     let title: String
-    let price: Int
+    let priceStr: String
+    var price: Float {
+        return Float(priceStr) ?? 0
+    }
 }
