@@ -10,10 +10,10 @@ import SwiftUI
 @main
 struct LittleLemonMenuM4App: App {
     let persistenceController = PersistenceController.shared
-    let ContentView = MainView()
     var body: some Scene {
         WindowGroup {
-            ContentView.environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

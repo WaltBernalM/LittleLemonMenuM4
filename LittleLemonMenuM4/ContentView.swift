@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct MainView: View {
+struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject var model = Model()
     @State var tabSelection = 0
@@ -57,6 +57,6 @@ struct MainView: View {
 
 struct MainView_previews: PreviewProvider {
     static var  previews: some View {
-        MainView().environmentObject(Model())
+        ContentView().environmentObject(Model())
     }
 }
