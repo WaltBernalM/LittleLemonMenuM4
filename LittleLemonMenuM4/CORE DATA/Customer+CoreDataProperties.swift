@@ -86,4 +86,17 @@ extension Customer : Identifiable {
         return request
     }
 
+    static func with(firstName: String, lastName: String, _ context: NSManagedObjectContext) -> Customer? {
+        let request = Customer.request()
+        let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
+        request.predicate = predicate
+        do {
+            guard let results = try context.fetch(request) as? [Customer], results.count > 0
+            else { return nil }
+            return results.first
+        } catch (let error) {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
 }
