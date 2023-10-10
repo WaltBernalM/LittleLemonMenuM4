@@ -45,8 +45,8 @@ struct OurDishes: View {
             
             NavigationView {
                 FetchedObjects(
-//                    predicate: buildPredicate(),
-//                    sortDescriptors: buildSortDescriptors()
+                    predicate: buildPredicate(),
+                    sortDescriptors: buildSortDescriptors()
                 ) {
                     (dishes: [Dish]) in
                     List{
@@ -66,6 +66,23 @@ struct OurDishes: View {
                 await dishesModel.reload(viewContext)
             }
         }
+    }
+    
+    func buildPredicate() -> NSPredicate {
+        if searchText.count == 0 {
+            return NSPredicate(value: true)
+        }
+        return NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+    }
+    
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(
+                key: "name",
+                ascending: true, 
+                selector: #selector(NSString.localizedStandardCompare)
+            )
+        ]
     }
 }
 
