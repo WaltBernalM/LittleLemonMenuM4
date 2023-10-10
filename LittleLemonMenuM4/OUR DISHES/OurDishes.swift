@@ -68,7 +68,11 @@ struct OurDishes: View {
             }
             .scrollContentBackground(.hidden)
             .task {
-                await dishesModel.reload(viewContext)
+                // Fix to  avoid duplicated items rendering
+                if !menuLoaded {
+                    await dishesModel.reload(viewContext)
+                }
+                menuLoaded = true
             }
         }
     }
